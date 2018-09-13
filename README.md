@@ -12,12 +12,14 @@
 
 5.集合框架以及String
 
+#ArrayList 底层是数组
 
-ArrayList 底层是数组
-LinkedList 底层是双向链表
-hashMap扩容：
+#LinkedList 底层是双向链表
+
+#hashMap
 HashMap不是线程安全的，如果想要线程安全的HashMap，可以通过Collections类的静态方法synchronizedMap获得线程安全的HashMap。
 Map map = Collections.synchronizedMap(new HashMap())
+
 在JDK8中，当链表长度达到8，会转化成红黑树，以提升它的查询、插入效率，它实现了Map<K,V>, Cloneable, Serializable接口。
 HashMap的底层主要是基于数组和链表来实现的，它之所以有相当快的查询速度主要是因为它是通过计算散列码来决定存储的位置。HashMap中主要是通过key的hashCode来计算hash值的，只要hashCode相同，计算出来的hash值就一样。如果存储的对象对多了，就有可能不同的对象所算出来的hash值是相同的，这就出现了所谓的hash冲突。学过数据结构的同学都知道，解决hash冲突的方法有很多，HashMap底层是通过链表来解决hash冲突的。
 
