@@ -34,4 +34,52 @@
 
 上面调用到了一个resize方法， 我们来看看这个方法里面做了什么，实现逻辑如下： 
 1. 如果当前数组为空，则初始化当前数组 。
-2. 如果当前table数组不为空，则将当前的table数组扩大两倍，同时将阈值（threshold）扩大两倍 数组长度和阈值扩大成两倍之后，将之前table数组中的值全部放到新的table中去
+2. 如果当前table数组不为空，则将当前的table数组扩大两倍，同时将阈值（threshold）扩大两倍 数组长度和阈值扩大成两倍之后，将之前table数组中的值全部放到新的table中去。
+
+HashMap的四种遍历方式：
+
+1.在for-each循环中使用entry来遍历
+
+    Map<Integer,Integer> map = new HashMap<Integer,Integer>();
+    
+    for(Map.Entry<Integer,Integer> entry : map.entrySet()){
+   
+     System.out.println("Key = " + entry.getKey() + ",Value =" + entry.getValue());
+    }
+    
+2.在for-each循环中遍历keys或values
+    
+    Map<Integer,Integer> map = new HashMap<Integer,Integer>();
+    
+    for(Integer key : map.keySet()){
+    
+       System.out.println("Key = " + key);
+    }
+
+    for(Integer value : map.values()){
+       
+       System.out.println("Value =" + value);
+    }
+
+3.使用Iterator遍历
+
+    Map<Integer,Integer> map = new HashMap<Integer,Integer>();
+    
+    Iterator<Map.Entry<Integer,Integer>> entries = map.entrySet().iterator();
+    
+    while(entries.hasNext()){
+       
+       Map.Entry<Integer,Integer> entry = entries.next();
+    
+       System.out.println("Key = " + entry.getKey() + ",Value = " + entry.getValue());
+    }
+4.通过键找值遍历
+
+    Map<Integer,Integer> map = new HashMap<Integer,Integer>();
+    
+    for(Integer key : map.keySet)()){
+       
+    Integer value = map.get(key);
+    
+    System.out.println("Key = " + key + ",Value = " + value);
+    }
