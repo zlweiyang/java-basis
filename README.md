@@ -49,3 +49,39 @@ put 方法比较经常使用的方法，主要功能是为HashMap对象添加一
 
 7.NIO
 
+## 8.String（字符串常量）与StringBuffer(字符串变量、线程安全)、StringBuilder(字符串变量非线程安全) ##
+
+String类型是final类型，在堆中分配的内存地址不变，其底层是final修饰的char[]数组，数组的内存地址同样不可变。对String对象的任何改变都不影响到原对象，相关的任何改变操作都会生成新的对象。
+
+    String str1 = "hello world"//编译器生成字符常量和符号引用，在运行时JVM会去查找常量池中是否有"hello world"。
+    String str2 = new String("hello world")//通过new关键字在堆生成对象，不会检测对象是否存在。
+
+下面代码生成10000个对象
+
+    public class Main {
+ 
+    public static void main(String[] args) {
+        String string = "";
+        for(int i=0;i<10000;i++){
+            string += "hello";
+        }
+    }
+
+
+    }
+将String替换成StringBuilder就不会生成10000个对象，而是在原有对象基础上操作10000次。StringBuffer与StringBuilder区别仅仅是在类的成员方法前加入一个synchronized关键字，在多线程访问时起到保护作用。
+
+## 9 Java面向对象的三大特性 ##
+
+继承、封装、多态。
+
+**继承**
+Java中继承只能单继承，但是可以通过内部类继承其他类来实现多继承。
+
+**封装**
+封装主要是通过访问控制符保护类中的信息。
+
+**多态**
+多态一般份分为两种，一种实现重写，一种是重载。
+
+重写：子类重写父类同名方法，重载：同一个类中同名方法可以有不同参数列表，从jvm角度看，重写又叫运行时多态。
