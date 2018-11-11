@@ -71,7 +71,14 @@ String类型是final类型，在堆中分配的内存地址不变，其底层是
     }
 将String替换成StringBuilder就不会生成10000个对象，而是在原有对象基础上操作10000次。StringBuffer与StringBuilder区别仅仅是在类的成员方法前加入一个synchronized关键字，在多线程访问时起到保护作用。
 
-## 9 Java面向对象的三大特性 ##
+## 9.String中的hashCode和equal ##
+
+- String有重写Object的hascode和toString方法。
+- 当equal方法被重写时，通常必须重写hashCode方法。1.两个对象相等，其hashCode必相等；2.两对象的hashCode不相等时，两对象肯定不相等；3.两对象的hashCode相等，这两个对象不一定相等。 
+- 重写equals不重写hashcode会出现问题：在存储散列集合时，如果两个对象拥有不同hashCode，则在集合中将存储两个值相同的对象，从而导致混淆，所以重写equals方法时，必须重写hashCode。
+
+
+## 10 Java面向对象的三大特性 ##
 
 继承、封装、多态。
 
